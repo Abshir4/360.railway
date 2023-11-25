@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+#panorama {
+    width: 100%;
+    height: 100vh;
+}
+
+.scene-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: block;
+    height: 20px;
+    width: 20px;
+    font-size: 0; /* Hide any text content */
+}
+
+/* Add a pseudo-element with the "X" character */
+.scene-button::before {
+    content: "X"; /* Display an "X" */
+    color: black;
+    font-size: 20px; /* Adjust the font size of the "X" as needed */
+    position: absolute; /* Positioning the "X" element */
+    top: 50%; /* Center vertically within the parent button */
+    left: 50%; /* Center horizontally within the parent button */
+    transform: translate(-50%, -50%); /* Center the "X" both vertically and horizontally within the button */
+}
+
+    
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+
+<script>
+pannellum.viewer('panorama', {
+    "default": {
+        "firstScene": "image1",
+        "sceneFadeDuration": 1000
+    },
+    "scenes": {
+        {% for image in images %}
+        "image{{ loop.index }}": {
+            "title": "{{ image }}",
+            "hfov": 120,
+            "pitch": 0,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "/static/images/{{ image }}", // Set the path to images
+            "hotSpots": [
+            {
+                    "pitch": -50,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 1 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -30,
+                    "targetYaw": 0
+                },
+                {
+                    "pitch": -45,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 2 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -15,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -42,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 3 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -39,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 4 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -30,
+                    "targetYaw": 0
+                },
+                {
+                    "pitch": -36,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 5 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -15,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -34,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 6 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -31,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 7 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -30,
+                    "targetYaw": 0
+                },
+                {
+                    "pitch": -29,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 8 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -15,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -27,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 9 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -34,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 10 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -30,
+                    "targetYaw": 0
+                },
+                {
+                    "pitch": -32,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 11 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -15,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -31,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 12 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -30,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 14 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -30,
+                    "targetYaw": 0
+                },
+                {
+                    "pitch": -29,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 14 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -15,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -28,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 15 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -27,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 16 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -26,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 17 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -25,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 18 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -24,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 19 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -23,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 20 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -22,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 21 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -21,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 22 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },                {
+                    "pitch": -20,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 23 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -19,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 24 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -18,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 25 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -17,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 26 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -16,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 27 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -15,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 28 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -14,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 29 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -13,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 30 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -12,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 31 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -11,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 32 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -10,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 33 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -9,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 34 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+                {
+                    "pitch": -8,
+                    "yaw": 0,
+                    "type": "scene",
+                    "sceneId": "image{{ loop.index + 35 }}",
+                    "createTooltipFunc": hotspotButton,
+                    "targetPitch": -5,
+                     "targetYaw": 0
+                },
+
+
+
+            ]
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    }
+});
+
+function hotspotButton(hotSpotDiv, args) {
+    hotSpotDiv.classList.add('scene-button'); // Add 'scene-button' class to the hotSpotDiv
+    var button = document.createElement('button'); // Create a new button element
+    hotSpotDiv.appendChild(button); // Append the button to hotSpotDiv
+
+    // Set the button's style to make it invisible and unclickable
+    button.style.opacity = '0'; // Make the button invisible by setting opacity to 0
+    button.style.pointerEvents = 'none'; // Disable pointer events on the invisible button
+
+    button.onclick = function () {
+        window.location.href = hotSpotDiv.attributes['data-scene-link'].value; // Handle button click to navigate to the specified scene
+    };
+}
+</script>
+
+</body>
+</html>
